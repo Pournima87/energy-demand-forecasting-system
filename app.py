@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 from statsmodels.tsa.statespace.sarimax import SARIMAX
+import os
+import gdown
 
 if "forecast" not in st.session_state:
     st.session_state.forecast = None
@@ -56,15 +58,24 @@ st.markdown("""
 # -------------------------
 # LOAD DATA
 # -------------------------
+
 @st.cache_data
 def load_data():
-    df = pd.read_csv("data/household_power_consumption.csv", sep=';', low_memory=False, na_values=['?'])
+
+    file_path = "data.csv"
+
+    if not os.path.exists(file_path):
+        url = "https://drive.google.com/uc?id=1Ywr67eRS3bmnZm251_GU62Ds-IxoF9r7"
+        gdown.download(url, file_path, quiet=False)
+
+    df = pd.read_csv(file_path, sep=';', low_memory=False, na_values=['?'])
+
     df = df.ffill()
     df['datetime'] = pd.to_datetime(df['Date'] + ' ' + df['Time'], dayfirst=True)
     df = df.set_index('datetime')
-    df = df.drop(['Date','Time'], axis=1)
-    df_daily = df.resample('D').mean()
-    return df_daily
+    df = df.drop(['Date', 'Time'], axis=1)
+
+    return df.resample('D').mean()
 
 df = load_data()
 
