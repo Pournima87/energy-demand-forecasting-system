@@ -19,19 +19,6 @@ env/
 .ipynb_checkpoints/
 
 # -------------------------
-# DATA FILES (IMPORTANT)
-# -------------------------
-data/*.csv
-data/*.txt
-data/*.xlsx
-
-# -------------------------
-# MODEL FILES
-# -------------------------
-model/*.pkl
-model/*.joblib
-
-# -------------------------
 # STREAMLIT
 # -------------------------
 .streamlit/
