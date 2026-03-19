@@ -216,7 +216,7 @@ elif page == "Forecast":
     else:
         st.info("Click 'Generate Forecast' to see predictions")
 
-    st.info("👉 Go to 'Intelligence' page for risk analysis and recommendations")
+    st.info("👉 Go to 'Risk Engine' page for risk analysis and recommendations")
 
     # -------------------------
     # INSIGHTS
