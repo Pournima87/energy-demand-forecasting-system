@@ -133,7 +133,7 @@ streamlit run app.py
 
 🌐 Live Demo
 
-👉 (Add your Streamlit link here after deployment)
+👉 [(Lets have a quick tour)](https://energy-demand-forecasting-system.streamlit.app/)
 
 ---
 
